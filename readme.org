@@ -1,0 +1,3 @@
+* vue-talk
+  
+  This repo contains my Vue talk slides and demo source code.
