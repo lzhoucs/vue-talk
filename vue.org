@@ -1,0 +1,236 @@
+* 
+#+DOWNLOADED: https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Vue.js_Logo.svg/768px-Vue.js_Logo.svg.png @ 2018-11-28 22:54:28
+[[file:images/768px-Vue.js_Logo.svg_2018-11-28_22-54-28.png]]
+**           Vue.js Introduction
+* About Vue.js
+
+** What is Vue.js
+   
+   - A JavaScript framework
+   - A render engine
+   - A collaboration tool
+   - Not A UI framework
+     
+* About Vue.js(Continued)
+  
+** Core Features
+
+   - Versatile components
+   - Built-in reactivity
+   - Virtual dom
+   - Small and fast
+   - Less opinionated, more flexible
+   - Low learning curve
+
+ More resources:
+ - https://github.com/snabbdom/snabbdom
+
+* About Vue.js(Continued)
+
+** Most starred project on GitHub in 2017
+   #+attr_org: :width 1280
+   [[file:images/view-stars-2017.png]]
+* About Vue.js(Continued)
+
+** Vue.js is fast
+   #+attr_org: :width 960
+   [[file:images/jsframework-benchmark.png]]
+
+* Prototyping
+  
+** Vue CLI 3
+   - create: create a standard vue project, batteries included
+   - ui: create/manage projects
+   - serve: zero config, instant prototyping
+   - add: add plugins
+
+* Prototyping(continued)
+  
+** CodeSandbox (https://codesandbox.io/s/vue)
+   #+attr_org: :width 1024
+   [[file:images/codesandbox-vue.png]]
+   
+   - Full-featured project prototyping
+   - Based on Vue CLI 3
+* Prototyping(continued)
+  
+** CodePen (https://codepen.io/pen?template=WgQeXN)
+   #+attr_org: :width 1024
+   [[file:images/codepen-vue.png]] 
+
+   - Quickly test ideas
+   - Discover latest frontend work and get inspired
+   - Checkout my fixed columns table: https://codepen.io/lzhoucs/pen/dqZvXr
+* Prototyping(continued)
+
+** single html with cdn 
+   - no external tools
+   - no magic
+
+* Vue's Reactivity Demystified
+  #+DOWNLOADED: https://vuejs.org/images/data.png @ 2018-12-02 18:47:50
+  [[file:images/vue-reactivity.png]]
+  - ~data~ properties gets converted to getter/setters using ~Object.defineProperty~
+  - Component's ~watcher~ records any properties "touched" during the component's ~render~
+  - When a dependency's setter is triggered, it notifies the watcher, which in turn triggers component's ~render~
+* Vue's Reactivity Demystified(Demo)
+  
+  It is best to demonstrate Vue's Reactivity by implementing one!
+  
+  #+DOWNLOADED: https://www.promisec.com/wp-content/uploads/2016/09/livedemo-1.png @ 2018-12-02 21:15:38
+  [[file:images/vue-demo.png]]
+
+* Vue's Reactivity Demystified(Demo Summary)
+
+  We implemented a deadly simply Vue clone with reactivity built-in:
+
+  - Publish/Subscribe model similar to Vue's
+  - Based on the same ~Object.defineProperty~ API that Vue is using
+  - Global ~watcher~, no virtual dom for simplicity
+    
+  More Resources:
+  - Vue's Dep class: https://github.com/vuejs/vue/blob/dev/src/core/observer/dep.js
+* Vue.js 3.0
+  
+** Faster
+   - Proxy-based Reactivity
+   - Virtual DOM Rewrite
+   - Double the speed, half the memory
+     
+** Smaller
+   - 10kb gzipped
+   - More modular codebase
+     
+** Improved TypeScript support
+   - Allow for a new level of type checking and useful errors/warnings in editors
+
+** No more Reactivity Caveats
+   
+
+  More resources:
+  - MDN Proxy: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
+  - Evan You Previews Vue.js 3.0: https://medium.com/vue-mastery/evan-you-previews-vue-js-3-0-ab063dec3547
+  - Change Detection Caveats: https://vuejs.org/v2/guide/reactivity.html#Change-Detection-Caveats
+* prettier
+
+  An opinionated code formatter.
+
+** editor plugin
+
+   - pros: faster(single file), can run on file save, best support for prettier
+   - cons: hard to integrate with eslint, cross editor support is inconsistent
+     
+** npm/yarn + cmd
+   
+   - pros: consistent corss editor support, easy to integrate with eslint
+   - slow(whole codebase)
+
+   
+ More Resources: 
+ https://prettier.io/playground/
+
+* ESLint Prettier Integration(step 1/2)
+  
+** Install ~eslint-plugin-prettier~
+   #+BEGIN_SRC sh
+     npm install --save-dev eslint-config-prettier
+   #+END_SRC
+** Use ~plugin:prettier/recommended~ config
+  #+BEGIN_SRC js
+    // .eslintrc.json
+    {
+        "extends": ["plugin:prettier/recommended"]
+    }
+  #+END_SRC
+  - Enables ~eslint-plugin-prettier~
+  - Sets the ~prettier/prettier~ rule to "error".
+  - Extends the ~eslint-config-prettier~ configuration(require package to be installed)
+* ESLint Prettier Integration(step 2/2)
+  
+** Install eslint-config-prettier
+   #+BEGIN_SRC sh
+     npm install --save-dev eslint-config-prettier   
+   #+END_SRC
+** Add extra config
+   #+BEGIN_SRC js
+     "extends": [
+         "prettier/standard",
+         "prettier/vue"
+     ]   
+   #+END_SRC
+ 
+ More resources:
+ - For how to use configuration from a plugin, see: https://eslint.org/docs/user-guide/configuring#using-the-configuration-from-a-plugin
+ - EC's implementation PR: https://github.com/ProviderTrust/exclusioncheck2/pull/1115
+
+* How Vue.js is used in EC
+
+** Full leverage Spring MVC
+   
+   - Modern RESTful APIs
+   - A clean/clear architecture
+   - A file system for streaming frontend resources
+
+     
+ For Spring MVC setup: https://github.com/ProviderTrust/exclusioncheck2/pull/593
+* How Vue.js is used in EC(continued)
+  
+** Build
+ 
+   - App created with Vue CLI 2
+   - Integrate into Gradle pipeline for production
+   - Integrate with Intellij build for local development(not recommended)
+   - Standalone Vue build for rapid local development(recommended)
+     - Hot reload
+     - APIs from any environments
+       
+ 
+ More resources:
+ - Vue build integration: https://github.com/ProviderTrust/exclusioncheck2/pull/781
+ - Build enhancements: https://github.com/ProviderTrust/exclusioncheck2/pull/985
+ - Vue dev build proxy: https://github.com/ProviderTrust/exclusioncheck2/pull/981
+* How Vue.js is used in EC(continued)
+  
+** Live with Proteus App and survive
+   
+   - Spring MVC app and Proteus app shares the same Spring container and session 
+   - A single page vue app lives alongside Proteus App
+   - X vue apps live *inside* Proteus App
+
+ 
+ More resources:
+ - Small Vue app inside Proteus: https://github.com/ProviderTrust/exclusioncheck2-webdev/pull/203
+ - Approaches: https://agile.providertrust.com/browse/EC-952
+
+
+* Testing
+
+** unit testing with vue-test-utils
+** snapshot testing
+   
+   Simple to write. Easy to maintain.
+  #+BEGIN_SRC js
+    expect(tree).toMatchSnapshot()
+  #+END_SRC
+  
+** e2e testing
+
+* Good vue resources
+  
+** Beginner Tutorials
+   
+   - Free screencasts and courses:
+     - https://scrimba.com/playlist/pXKqta
+     - https://scrimba.com/g/glearnvue
+   
+   - Vue offical guide: https://vuejs.org/v2/guide/
+
+** Keep up to date
+   
+   - Vue News: https://news.vuejs.org/
+   - Awesome Vue.js Repo: https://github.com/vuejs/awesome-vue
+
+* Questions?
+  #+attr_org: :width 1440
+  [[file:images/q&a.png]]
+

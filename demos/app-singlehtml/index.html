@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Vue demo</title>
+    <script src="//unpkg.com/lodash"></script>
+    <!-- <script src="vuedemo.js"></script> -->
+    <script src="vuedemoproxy.js"></script>
+  </head>
+  <body>
+    <h1 id="app">
+      price: {{price}}, quantity: {{quantity}}, total: {{total}}
+    </h1>
+    <script>
+      const app = new VueDemo({
+        el: '#app',
+        data: {
+          price: 10,
+          quantity: 2
+        },
+        computed: {
+          total() {
+            return this.price * this.quantity
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

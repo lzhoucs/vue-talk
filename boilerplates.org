@@ -1,0 +1,21 @@
+* html
+  price: {{price}}, quantity: {{quantity}}, total: {{total}}
+* console log
+  `price: ${app.price}, quantity: ${app.quantity}, total: ${app.total}`
+* Dep
+class Dep {
+  constructor () {
+    this.subscribers = []
+  }
+  depend() {
+    if (target && !this.subscribers.includes(target)) {
+      this.subscribers.push(target)
+    }
+  }
+  notify() {
+    this.subscribers.forEach(sub => sub())
+  }
+}
+
+* delimter
+{ interpolate: /{{([\s\S]+?)}}/g }
