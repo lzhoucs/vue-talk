@@ -1,3 +1,7 @@
 * vue-talk
   
-  This repo contains my Vue talk [[file:vue.org][slides]] and [[file:demos][demo source code]].
+  This repo contains my Vue talk [[file:vue.org][slides]] and [[file:demos][demo source code]] given in a company internal dev talk as an introduction to Vue.js to people who are new to this increasingly popular framework.
+
+  A [[file:demos/vue-clone][Simple Vue clone]] is created during the demo to demystify Vue's reactivity system in two implementation:
+  - [[file:demos/vue-clone/vuedemo.js][JavaScript getter and setter]]
+  - [[file:demos/vue-clone/vuedemoproxy.js][JavaScript Proxy]]
